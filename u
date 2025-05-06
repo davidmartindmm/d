@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obteniendo tu Ubicación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Obteniendo tu ubicación</h1>
+    <p>Haz clic en el botón para obtener tu ubicación y ver las coordenadas.</p>
+    <button onclick="getLocation()">Obtener Ubicación</button>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    // Redirigir a la página "ver.html" con las coordenadas como parámetros
+                    window.location.href = "ver.html?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;
+                });
+            } else {
+                alert("Geolocalización no soportada en este navegador.");
+            }
+        }
+    </script>
+</body>
+</html>
